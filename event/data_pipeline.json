@@ -1,0 +1,14 @@
+{
+    "Records":[
+        {
+            "s3":{
+                "bucket":{
+                    "name":"chao-jiangren-demo-bucket"
+                },
+                "object":{
+                    "key":"csv/WorldCup.csv"
+                }
+            }
+        }
+    ]
+}
