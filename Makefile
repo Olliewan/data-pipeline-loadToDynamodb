@@ -1,4 +1,4 @@
-AWS_PROFILE=chaodev
+AWS_PROFILE=admin_user
 ENVIRONMENT=dev
 
 deploy:

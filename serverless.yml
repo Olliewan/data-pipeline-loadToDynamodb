@@ -28,7 +28,7 @@ provider:
   memorySize: 256
   timeout: 300
   deploymentBucket:
-    name: jiangren-de-demo-deployment
+    name: demo-deployment
     maxPreviousDeploymentArtifacts: 3
   stage: ${env:STAGE}
   region: ${env:REGION}

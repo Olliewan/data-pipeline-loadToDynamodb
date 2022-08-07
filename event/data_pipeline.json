@@ -3,7 +3,7 @@
         {
             "s3":{
                 "bucket":{
-                    "name":"chao-jiangren-demo-bucket"
+                    "name":"demo-bucket"
                 },
                 "object":{
                     "key":"csv/WorldCup.csv"
