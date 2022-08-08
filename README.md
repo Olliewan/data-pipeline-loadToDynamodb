@@ -17,7 +17,7 @@ pip3 install -r requirements.txt
 sudo apt-get update && sudo apt-get upgrade -y
 # 2. Install node
 sudo apt-get install curl -y
-curl –sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl –sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 sudo apt-get nodejs -y
 # 3. Test node
 node -v
@@ -36,11 +36,11 @@ serverless -v
 sudo npm install --save-dev serverless-prune-plugin
 # 2. Alternatively, install with the Serverless plugin command (Serverless Framework 1.22 or higher)
 cd ${PROJECT_FOLDER}
-sls plugin install -n serverless-prune-plugin
+sudo sls plugin install -n serverless-prune-plugin
 # Install serverless python requirements
 # https://github.com/UnitedIncome/serverless-python-requirements
 cd ${PROJECT_FOLDER}
-sls plugin install -n serverless-python-requirements
+sudo sls plugin install -n serverless-python-requirements
 # Install serverless dotenv plugin
 sudo npm i -D serverless-dotenv-plugin
 ```

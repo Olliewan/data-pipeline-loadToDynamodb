@@ -13,7 +13,7 @@ table = dynamodb.Table(os.environ['DYNAMO_TABLE'])
 tz_sydney = timezone(os.environ['TZ_LOCAL'])
 date = datetime.now(tz_sydney).strftime("%Y-%m-%d")
 
-def run(event, context):
+def lambda_handler(event, context):
     print("Started\t\t" + str(event))
     records = event['Records']
     for record in records:

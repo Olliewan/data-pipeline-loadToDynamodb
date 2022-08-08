@@ -1,5 +1,8 @@
 service: ${env:APPLICATION}
 
+useDotenv: true
+variablesResolutionMode: 20210326
+
 plugins:
   - serverless-prune-plugin
   - serverless-python-requirements
@@ -28,20 +31,20 @@ provider:
   memorySize: 256
   timeout: 300
   deploymentBucket:
-    name: demo-deployment
+    name: data-pipeline-deployment
     maxPreviousDeploymentArtifacts: 3
-  stage: ${env:STAGE}
   region: ${env:REGION}
   versionFunctions: true
+  
 
-# you can add statements to the Lambda function's IAM Role here
+# add statements to the Lambda function's IAM Role here
   iamRoleStatements:
     - Effect: Allow
       Action:
         - s3:HeadObject
         - s3:GetObject
       Resource:
-        - arn:aws:s3:::chao-jiangren-demo-bucket/*
+        - arn:aws:s3:::data-pipeline-load-to-dynamodb/*
     - Effect: Allow
       Action: 
         - dynamodb:*
@@ -52,11 +55,11 @@ provider:
         - logs:*
       Resource: "*"
 
-# you can define service wide environment variables here
+# define service wide environment variables here
   environment:
     DYNAMO_TABLE: ${self:custom.dynamoDbTable}
 
-# you can add packaging information here
+# add packaging information here
 package:
   exclude:
     - __cache__/**
@@ -67,20 +70,20 @@ package:
 
 functions:
   dataPipeline:
-    handler: data_pipeline.run
-    name: my_first_data_pipeline
-    description: "jiang ren data pipeline demo"
+    handler: data_pipeline.lambda_handler
+    name: load_data_to_dynamodb
+    description: "data pipeline demo"
     events:
       - s3:
-          bucket: chao-jiangren-demo-bucket
+          bucket: data-pipeline-load-to-dynamodb
           event: s3:ObjectCreated:*
           rules:
             - prefix: csv/
           existing: true
 
-# you can add CloudFormation resource templates here
+# add CloudFormation resource templates 
 resources:
-  Description: Jang Ren data pipeline services defination
+  Description: Data pipeline services definition
   Resources:
     pipelineDynamoDBTable:
       Type: AWS::DynamoDB::Table

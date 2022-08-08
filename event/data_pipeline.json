@@ -3,7 +3,7 @@
         {
             "s3":{
                 "bucket":{
-                    "name":"demo-bucket"
+                    "name":"data-pipeline-load-to-dynamodb"
                 },
                 "object":{
                     "key":"csv/WorldCup.csv"
